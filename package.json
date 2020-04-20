@@ -1,0 +1,31 @@
+{
+  "name": "@sap/html5-app-deployer",
+  "engines": {
+    "node": "6.0.0"
+  },
+  "version": "1.1.5",
+  "description": "HTML5 application deployer",
+  "main": "index.js",
+  "dependencies": {
+    "archiver": "1.3.0",
+    "request": "2.81.0",
+    "cf-nodejs-logging-support": "2.1.0"
+  },
+  "devDependencies": {
+    "chai": "3.5.0",
+    "mocha": "3.0.2",
+    "eslint": "3.2.2",
+    "connect": "3.6.2",
+    "whitesource": "1.0.7",
+    "istanbul": "0.4.4"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "node --throw-deprecation node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha test -- --recursive --check-leaks",
+    "lint": "eslint -c .eslintrc -f stylish lib/ index.js",
+    "ipscan": "node ./node_modules/whitesource/bin/whitesource run",
+    "prepareRelease": "npm prune --production",
+    "removeTests": "rm -rf test && rm -f .travis.yml && rm -f .eslintrc && rm -f .gitignore && rm -f whitesource.config.json && rm -rf coverage"
+  },
+  "license": "SAP"
+}
